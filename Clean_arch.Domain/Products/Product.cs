@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clean_arch.Domain.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,31 +11,28 @@ namespace Clean_arch.Domain.Products
     {
         public Guid Id { get; private set; }
         public string Title { get; private set; }
-        public int Price { get; private set; }
+        public Money Price { get; private set; }
 
-        public Product(string title, int price)
+        public Product(string title, Money price)
         {
-            Guard(title, price);
+            Guard(title);
             Title = title;
-            Price = price;
+            Price = Money.FromToman(price.Value);
             Id = Guid.NewGuid();
         }
 
-        public void Edit(string title, int price)
+        public void Edit(string title, Money price)
         {
-            Guard(title, price);
+            Guard(title);
             Title = title;
             Price = price;
         }
 
 
-        private void Guard(string title, int price)
+        private void Guard(string title)
         {
             if (string.IsNullOrWhiteSpace(title))
                 throw new ArgumentNullException("title");
-
-            if (price < 0)
-                throw new ArgumentOutOfRangeException();
         }
     }
 }
