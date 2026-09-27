@@ -1,7 +1,9 @@
 ﻿using Clean_arch.Application.Order;
+using Clean_arch.Application.Order.Services;
 using Clean_arch.Application.Product;
 using Clean_arch.Contracts;
 using Clean_arch.Domain.Orders.Repository;
+using Clean_arch.Domain.OrdersAgg.Services;
 using Clean_arch.Domain.Products.Repository;
 using Clean_arch_Infrastructure;
 using Clean_arch_Infrastructure.Persistend.Memory;
@@ -20,6 +22,7 @@ namespace Clean_arch.Config
             serviceCollection.AddScoped<IProductService, ProductService>();
             serviceCollection.AddScoped<IOrderRepository, OrderRepository>();
             serviceCollection.AddScoped<IProductRepository, ProductRepository>();
+            serviceCollection.AddScoped<IOrderDomainService, OrderDomainService>();
             serviceCollection.AddSingleton<Context>();
         }
     }

@@ -14,5 +14,6 @@ namespace Clean_arch.Domain.Products.Repository
         void Update(Product product);
         void Remove(Product product);
         void SaveChanges();
+        bool IsProductExsit(Guid Id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Clean_arch.Domain.OrdersAgg;
+using Clean_arch.Domain.OrdersAgg.Services;
 using Clean_arch.Domain.Shared;
 using System;
 using System.Collections.Generic;
@@ -25,8 +26,10 @@ namespace Clean_arch.Domain.Orders
             IsFinally = true;
             FinallyDate = DateTime.Now;
         }
-        public void AddItem(Guid productId,int count,int price)
+        public void AddItem(Guid productId,int count,int price,IOrderDomainService orderDomainService)
         {
+            if (orderDomainService.IsProductNotExist(productId))
+                throw new Exception("");
             if (Items.Any(p => p.ProductId == productId))
                 return;
 
