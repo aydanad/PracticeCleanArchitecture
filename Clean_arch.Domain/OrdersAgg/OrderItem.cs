@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Clean_arch.Domain.OrdersAgg
 {
-    public class OrderItem
+    public class OrderItem:BaseEntity
     {
         public OrderItem(long orderId, int count, Guid productId, Money price)
         {
